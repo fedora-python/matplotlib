@@ -613,6 +613,7 @@ def matplotlib_fname():
           is not defined)
     - On other platforms,
       - ``$HOME/.matplotlib/matplotlibrc`` if ``$HOME`` is defined
+    - ``/etc/matplotlibrc``
     - Lastly, it looks in ``$MATPLOTLIBDATA/matplotlibrc``, which should always
       exist.
     """
@@ -631,6 +632,7 @@ def matplotlib_fname():
             yield matplotlibrc
             yield os.path.join(matplotlibrc, 'matplotlibrc')
         yield os.path.join(get_configdir(), 'matplotlibrc')
+        yield '/etc/matplotlibrc'
         yield os.path.join(get_data_path(), 'matplotlibrc')
 
     for fname in gen_candidates():
