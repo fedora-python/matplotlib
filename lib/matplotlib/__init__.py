@@ -589,7 +589,8 @@ def get_cachedir():
 @_logged_cached('matplotlib data path: %s')
 def get_data_path():
     """Return the path to Matplotlib data."""
-    return str(Path(__file__).with_name("mpl-data"))
+    return str(Path(__file__).parent.parent.parent.parent.parent /
+               'share/matplotlib/mpl-data')
 
 
 def matplotlib_fname():
@@ -609,6 +610,7 @@ def matplotlib_fname():
           is not defined)
     - On other platforms,
       - ``$HOME/.matplotlib/matplotlibrc`` if ``$HOME`` is defined
+    - ``/etc/matplotlibrc``
     - Lastly, it looks in ``$MATPLOTLIBDATA/matplotlibrc``, which should always
       exist.
     """
@@ -627,6 +629,7 @@ def matplotlib_fname():
             yield matplotlibrc
             yield os.path.join(matplotlibrc, 'matplotlibrc')
         yield os.path.join(get_configdir(), 'matplotlibrc')
+        yield '/etc/matplotlibrc'
         yield os.path.join(get_data_path(), 'matplotlibrc')
 
     for fname in gen_candidates():
