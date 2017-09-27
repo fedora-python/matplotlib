@@ -460,10 +460,17 @@ def test_rcparams_reset_after_fail():
         assert mpl.rcParams['text.usetex'] is False
 
 
-def test_if_rctemplate_is_up_to_date():
+@pytest.fixture
+def mplrc():
+    # This is the Fedora-specific location.
+    return (Path(__file__).parent.parent.parent.parent.parent.parent.parent /
+            'etc/matplotlibrc')
+
+
+def test_if_rctemplate_is_up_to_date(mplrc):
     # This tests if the matplotlibrc.template file contains all valid rcParams.
     deprecated = {*mpl._all_deprecated, *mpl._deprecated_remain_as_none}
-    with cbook._get_data_path('matplotlibrc').open() as file:
+    with mplrc.open() as file:
         rclines = file.readlines()
     missing = {}
     for k, v in mpl.defaultParams.items():
@@ -483,10 +490,10 @@ def test_if_rctemplate_is_up_to_date():
                          .format(missing.items()))
 
 
-def test_if_rctemplate_would_be_valid(tmpdir):
+def test_if_rctemplate_would_be_valid(tmpdir, mplrc):
     # This tests if the matplotlibrc.template file would result in a valid
     # rc file if all lines are uncommented.
-    with cbook._get_data_path('matplotlibrc').open() as file:
+    with mplrc.open() as file:
         rclines = file.readlines()
     newlines = []
     for line in rclines:
