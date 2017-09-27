@@ -624,18 +624,8 @@ def _get_data_path():
         return path
 
     def get_candidate_paths():
-        yield Path(__file__).with_name('mpl-data')
-        # setuptools' namespace_packages may hijack this init file
-        # so need to try something known to be in Matplotlib, not basemap.
-        import matplotlib.afm
-        yield Path(matplotlib.afm.__file__).with_name('mpl-data')
-        # py2exe zips pure python, so still need special check.
-        if getattr(sys, 'frozen', None):
-            yield Path(sys.executable).with_name('mpl-data')
-            # Try again assuming we need to step up one more directory.
-            yield Path(sys.executable).parent.with_name('mpl-data')
-            # Try again assuming sys.path[0] is a dir not a exe.
-            yield Path(sys.path[0]) / 'mpl-data'
+        yield (Path(__file__).parent.parent.parent.parent.parent /
+               'share/matplotlib/mpl-data')
 
     for path in get_candidate_paths():
         if path.is_dir():
@@ -678,8 +668,7 @@ def matplotlib_fname():
           is not defined)
     - On other platforms,
         - ``$HOME/.matplotlib/matplotlibrc`` if ``$HOME`` is defined
-    - Lastly, it looks in ``$MATPLOTLIBDATA/matplotlibrc``, which should always
-      exist.
+    - Lastly, it looks in ``/etc/matplotlibrc``, which should always exist.
     """
 
     def gen_candidates():
@@ -692,7 +681,7 @@ def matplotlib_fname():
             yield matplotlibrc
             yield os.path.join(matplotlibrc, 'matplotlibrc')
         yield os.path.join(get_configdir(), 'matplotlibrc')
-        yield os.path.join(get_data_path(), 'matplotlibrc')
+        yield '/etc/matplotlibrc'
 
     for fname in gen_candidates():
         if os.path.exists(fname) and not os.path.isdir(fname):

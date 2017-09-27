@@ -1,6 +1,7 @@
 from collections import OrderedDict
 import copy
 import os
+from pathlib import Path
 from unittest import mock
 import warnings
 
@@ -457,11 +458,17 @@ def test_rcparams_reset_after_fail():
         assert mpl.rcParams['text.usetex'] is False
 
 
-def test_if_rctemplate_is_up_to_date():
+@pytest.fixture
+def mplrc():
+    # This is the Fedora-specific location.
+    return (Path(__file__).parent.parent.parent.parent.parent.parent.parent /
+            'etc/matplotlibrc')
+
+
+def test_if_rctemplate_is_up_to_date(mplrc):
     # This tests if the matplotlibrc.template file contains all valid rcParams.
     deprecated = {*mpl._all_deprecated, *mpl._deprecated_remain_as_none}
-    path_to_rc = os.path.join(mpl.get_data_path(), 'matplotlibrc')
-    with open(path_to_rc, "r") as f:
+    with open(mplrc, "r") as f:
         rclines = f.readlines()
     missing = {}
     for k, v in mpl.defaultParams.items():
@@ -484,11 +491,10 @@ def test_if_rctemplate_is_up_to_date():
                          .format(missing.items()))
 
 
-def test_if_rctemplate_would_be_valid(tmpdir):
+def test_if_rctemplate_would_be_valid(tmpdir, mplrc):
     # This tests if the matplotlibrc.template file would result in a valid
     # rc file if all lines are uncommented.
-    path_to_rc = os.path.join(mpl.get_data_path(), 'matplotlibrc')
-    with open(path_to_rc, "r") as f:
+    with open(mplrc, "r") as f:
         rclines = f.readlines()
     newlines = []
     for line in rclines:
