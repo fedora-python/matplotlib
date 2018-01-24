@@ -63,8 +63,8 @@ def test_linewidth():
                   linewidth=lw)
 
 
-@image_comparison(['streamplot_masks_and_nans'],
-                  remove_text=True, style='mpl20', tol=0.04 if on_win else 0)
+@image_comparison(baseline_images=['streamplot_masks_and_nans'],
+                  remove_text=True, style='mpl20', tol=0.04 if on_win else .01)
 def test_masks_and_nans():
     X, Y, U, V = velocity_field()
     mask = np.zeros(U.shape, dtype=bool)
