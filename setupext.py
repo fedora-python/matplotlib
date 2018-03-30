@@ -838,14 +838,12 @@ class Png(SetupPackage):
 class Qhull(SetupPackage):
     name = "qhull"
 
+    def check(self):
+        self.__class__.found_external = True
+        return ' Using system copy.'
+
     def add_flags(self, ext):
-        # Qhull doesn't distribute pkg-config info, so we have no way of
-        # knowing whether a system install is recent enough.  Thus, always use
-        # the vendored version.
-        ext.include_dirs.insert(0, 'extern')
-        ext.sources.extend(sorted(glob.glob('extern/libqhull/*.c')))
-        if sysconfig.get_config_var('LIBM') == '-lm':
-            ext.libraries.extend('m')
+        ext.libraries.append('qhull')
 
 
 class TTConv(SetupPackage):
