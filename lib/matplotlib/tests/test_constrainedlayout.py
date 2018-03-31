@@ -164,7 +164,8 @@ def test_constrained_layout9():
     fig.suptitle('Test Suptitle', fontsize=28)
 
 
-@image_comparison(['constrained_layout10.png'])
+@image_comparison(['constrained_layout10.png'],
+                  tol=0.01)
 def test_constrained_layout10():
     'Test for handling legend outside axis'
     fig, axs = plt.subplots(2, 2, constrained_layout=True)

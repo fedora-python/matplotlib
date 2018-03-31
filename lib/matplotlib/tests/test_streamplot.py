@@ -49,7 +49,7 @@ def test_colormap():
 
 
 @image_comparison(['streamplot_linewidth'], remove_text=True, style='mpl20',
-                  tol={'aarch64': 0.02}.get(platform.machine(), 0.0))
+                  tol=0.002)
 def test_linewidth():
     X, Y, U, V = velocity_field()
     speed = np.hypot(U, V)
