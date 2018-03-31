@@ -73,7 +73,7 @@ def quantity_converter():
 # Tests that the conversion machinery works properly for classes that
 # work as a facade over numpy arrays (like pint)
 @image_comparison(baseline_images=['plot_pint'],
-                  tol={'aarch64': 0.02}.get(platform.machine(), 0.0),
+                  tol=0.003,
                   extensions=['png'], remove_text=False, style='mpl20')
 def test_numpy_facade(quantity_converter):
     # Register the class
@@ -98,7 +98,7 @@ def test_numpy_facade(quantity_converter):
 
 # Tests gh-8908
 @image_comparison(baseline_images=['plot_masked_units'],
-                  tol={'aarch64': 0.02}.get(platform.machine(), 0.0),
+                  tol=0.007,
                   extensions=['png'], remove_text=True, style='mpl20')
 def test_plot_masked_units():
     data = np.linspace(-5, 5)

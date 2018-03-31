@@ -104,7 +104,7 @@ fig.canvas.mpl_connect("draw_event", lambda event: timer.start())
 
 plt.show()
 """
-_test_timeout = 10  # Empirically, 1s is not enough on Travis.
+_test_timeout = 30  # Empirically, 1s is not enough on Travis.
 
 
 @pytest.mark.parametrize("backend", _get_testable_interactive_backends())

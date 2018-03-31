@@ -395,7 +395,7 @@ def test_annotate_default_arrow():
     assert ann.arrow_patch is not None
 
 
-@image_comparison(baseline_images=['polar_axes'], style='default')
+@image_comparison(baseline_images=['polar_axes'], style='default', tol=0.01)
 def test_polar_annotations():
     # you can specify the xypoint and the xytext in different
     # positions and coordinate systems, and optionally turn on a
@@ -3519,7 +3519,7 @@ def test_vertex_markers():
 
 @image_comparison(baseline_images=['vline_hline_zorder',
                                    'errorbar_zorder'],
-                  tol={'aarch64': 0.02}.get(platform.machine(), 0.0))
+                  tol=0.02)
 def test_eb_line_zorder():
     x = list(range(10))
 

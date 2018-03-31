@@ -810,7 +810,7 @@ def test_imshow_endianess():
 
 
 @image_comparison(baseline_images=['imshow_masked_interpolation'],
-                  tol={'aarch64': 0.02}.get(platform.machine(), 0.0),
+                  tol=0.006,
                   remove_text=True, style='mpl20')
 def test_imshow_masked_interpolation():
 
