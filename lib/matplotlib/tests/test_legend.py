@@ -105,8 +105,7 @@ def test_multiple_keys():
                            (p2, p1): HandlerTuple(ndivide=None, pad=0)})
 
 
-@image_comparison(['rgba_alpha.png'], remove_text=True,
-                  tol={'aarch64': 0.02}.get(platform.machine(), 0.0))
+@image_comparison(['rgba_alpha.png'], remove_text=True)
 def test_alpha_rgba():
     import matplotlib.pyplot as plt
 
@@ -116,8 +115,7 @@ def test_alpha_rgba():
     leg.legendPatch.set_facecolor([1, 0, 0, 0.5])
 
 
-@image_comparison(['rcparam_alpha.png'], remove_text=True,
-                  tol={'aarch64': 0.02}.get(platform.machine(), 0.0))
+@image_comparison(['rcparam_alpha.png'], remove_text=True)
 def test_alpha_rcparam():
     import matplotlib.pyplot as plt
 
@@ -144,8 +142,7 @@ def test_fancy():
                ncol=2, shadow=True, title="My legend", numpoints=1)
 
 
-@image_comparison(['framealpha'], remove_text=True,
-                  tol={'aarch64': 0.02}.get(platform.machine(), 0.0))
+@image_comparison(['framealpha'], remove_text=True)
 def test_framealpha():
     x = np.linspace(1, 100, 100)
     y = x

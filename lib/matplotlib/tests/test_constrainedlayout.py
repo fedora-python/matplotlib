@@ -234,7 +234,7 @@ def test_constrained_layout12():
     ax.set_xlabel('x-label')
 
 
-@image_comparison(['constrained_layout13.png'], tol=2.e-2)
+@image_comparison(['constrained_layout13.png'], tol=3e-2)
 def test_constrained_layout13():
     'Test that padding works.'
     fig, axs = plt.subplots(2, 2, constrained_layout=True)

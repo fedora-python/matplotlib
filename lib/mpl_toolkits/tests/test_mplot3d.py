@@ -280,7 +280,7 @@ def test_text3d():
     ax.set_zlabel('Z axis')
 
 
-@image_comparison(['trisurf3d.png'], remove_text=True, tol=0.03)
+@image_comparison(['trisurf3d.png'], remove_text=True, tol=0.05)
 def test_trisurf3d():
     n_angles = 36
     n_radii = 8
@@ -756,7 +756,7 @@ class TestVoxels:
             assert voxels[coord], "faces returned for absent voxel"
             assert isinstance(poly, art3d.Poly3DCollection)
 
-    @image_comparison(['voxels-xyz.png'], tol=0.01)
+    @image_comparison(['voxels-xyz.png'], tol=0.02)
     def test_xyz(self):
         fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
 

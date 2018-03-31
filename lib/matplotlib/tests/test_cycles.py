@@ -8,8 +8,7 @@ import pytest
 from cycler import cycler
 
 
-@image_comparison(['color_cycle_basic.png'], remove_text=True,
-                  tol={'aarch64': 0.02}.get(platform.machine(), 0.0))
+@image_comparison(['color_cycle_basic.png'], remove_text=True)
 def test_colorcycle_basic():
     fig, ax = plt.subplots()
     ax.set_prop_cycle(cycler('color', ['r', 'g', 'y']))
@@ -25,8 +24,7 @@ def test_colorcycle_basic():
     ax.legend(loc='upper left')
 
 
-@image_comparison(['marker_cycle.png', 'marker_cycle.png'], remove_text=True,
-                  tol={'aarch64': 0.02}.get(platform.machine(), 0.0))
+@image_comparison(['marker_cycle.png', 'marker_cycle.png'], remove_text=True)
 def test_marker_cycle():
     fig, ax = plt.subplots()
     ax.set_prop_cycle(cycler('c', ['r', 'g', 'y']) +
@@ -58,8 +56,7 @@ def test_marker_cycle():
     ax.legend(loc='upper left')
 
 
-@image_comparison(['lineprop_cycle_basic.png'], remove_text=True,
-                  tol={'aarch64': 0.02}.get(platform.machine(), 0.0))
+@image_comparison(['lineprop_cycle_basic.png'], remove_text=True)
 def test_linestylecycle_basic():
     fig, ax = plt.subplots()
     ax.set_prop_cycle(cycler('ls', ['-', '--', ':']))

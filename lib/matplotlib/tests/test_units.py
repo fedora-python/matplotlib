@@ -73,8 +73,7 @@ def quantity_converter():
 
 # Tests that the conversion machinery works properly for classes that
 # work as a facade over numpy arrays (like pint)
-@image_comparison(['plot_pint.png'], remove_text=False, style='mpl20',
-                  tol={'aarch64': 0.02}.get(platform.machine(), 0.0))
+@image_comparison(['plot_pint.png'], remove_text=False, style='mpl20')
 def test_numpy_facade(quantity_converter):
     # use former defaults to match existing baseline image
     plt.rcParams['axes.formatter.limits'] = -7, 7

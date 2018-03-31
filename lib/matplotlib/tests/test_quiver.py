@@ -173,7 +173,7 @@ def test_quiver_key_xy():
             ax.quiverkey(q, X=x, Y=0.8, U=1, angle=angle, label='', color='b')
 
 
-@image_comparison(['barbs_test_image.png'], remove_text=True)
+@image_comparison(['barbs_test_image.png'], remove_text=True, tol=0.11)
 def test_barbs():
     x = np.linspace(-5, 5, 5)
     X, Y = np.meshgrid(x, x)
