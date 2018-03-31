@@ -9,7 +9,7 @@ from cycler import cycler
 
 
 @image_comparison(['color_cycle_basic.png'], remove_text=True,
-                  tol={'aarch64': 0.02}.get(platform.machine(), 0.0))
+                  tol=0.008)
 def test_colorcycle_basic():
     fig, ax = plt.subplots()
     ax.set_prop_cycle(cycler('color', ['r', 'g', 'y']))
@@ -26,7 +26,7 @@ def test_colorcycle_basic():
 
 
 @image_comparison(['marker_cycle.png', 'marker_cycle.png'], remove_text=True,
-                  tol={'aarch64': 0.02}.get(platform.machine(), 0.0))
+                  tol=0.008)
 def test_marker_cycle():
     fig, ax = plt.subplots()
     ax.set_prop_cycle(cycler('c', ['r', 'g', 'y']) +
@@ -59,7 +59,7 @@ def test_marker_cycle():
 
 
 @image_comparison(['lineprop_cycle_basic.png'], remove_text=True,
-                  tol={'aarch64': 0.02}.get(platform.machine(), 0.0))
+                  tol=0.009)
 def test_linestylecycle_basic():
     fig, ax = plt.subplots()
     ax.set_prop_cycle(cycler('ls', ['-', '--', ':']))

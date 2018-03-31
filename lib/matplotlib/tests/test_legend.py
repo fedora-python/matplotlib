@@ -106,7 +106,7 @@ def test_multiple_keys():
 
 
 @image_comparison(['rgba_alpha.png'], remove_text=True,
-                  tol={'aarch64': 0.02}.get(platform.machine(), 0.0))
+                  tol=0.007)
 def test_alpha_rgba():
     import matplotlib.pyplot as plt
 
@@ -117,7 +117,7 @@ def test_alpha_rgba():
 
 
 @image_comparison(['rcparam_alpha.png'], remove_text=True,
-                  tol={'aarch64': 0.02}.get(platform.machine(), 0.0))
+                  tol=0.007)
 def test_alpha_rcparam():
     import matplotlib.pyplot as plt
 
@@ -145,7 +145,7 @@ def test_fancy():
 
 
 @image_comparison(['framealpha'], remove_text=True,
-                  tol={'aarch64': 0.02}.get(platform.machine(), 0.0))
+                  tol=0.018)
 def test_framealpha():
     x = np.linspace(1, 100, 100)
     y = x
