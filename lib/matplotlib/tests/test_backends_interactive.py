@@ -57,4 +57,4 @@ def test_backend(backend):
     environ["MPLBACKEND"] = backend
     proc = Popen([sys.executable, "-c", _test_script], env=environ)
     # Empirically, 1s is not enough on Travis.
-    assert proc.wait(timeout=10) == 0
+    assert proc.wait(timeout=30) == 0
