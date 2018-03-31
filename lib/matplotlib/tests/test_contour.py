@@ -226,7 +226,8 @@ def test_given_colors_levels_and_extends():
 
 
 @image_comparison(baseline_images=['contour_datetime_axis'],
-                  extensions=['png'], remove_text=False, style='mpl20')
+                  extensions=['png'], remove_text=False, style='mpl20',
+                  tol=0.18)
 def test_contour_datetime_axis():
     fig = plt.figure()
     fig.subplots_adjust(hspace=0.4, top=0.98, bottom=.15)
@@ -252,7 +253,8 @@ def test_contour_datetime_axis():
 
 
 @image_comparison(baseline_images=['contour_test_label_transforms'],
-                  extensions=['png'], remove_text=True, style='mpl20')
+                  extensions=['png'], remove_text=True, style='mpl20',
+                  tol=1.38)
 def test_labels():
     # Adapted from pylab_examples example code: contour_demo.py
     # see issues #2475, #2843, and #2818 for explanation
@@ -283,7 +285,7 @@ def test_labels():
 
 @image_comparison(baseline_images=['contour_corner_mask_False',
                                    'contour_corner_mask_True'],
-                  extensions=['png'], remove_text=True)
+                  extensions=['png'], remove_text=True, tol=0.19)
 def test_corner_mask():
     n = 60
     mask_level = 0.95

@@ -108,7 +108,6 @@ def test_multiple_keys():
 
 
 @image_comparison(baseline_images=['rgba_alpha'],
-                  tol={'aarch64': 0.02}.get(platform.machine(), 0.0),
                   extensions=['png'], remove_text=True)
 def test_alpha_rgba():
     import matplotlib.pyplot as plt
@@ -120,7 +119,6 @@ def test_alpha_rgba():
 
 
 @image_comparison(baseline_images=['rcparam_alpha'],
-                  tol={'aarch64': 0.02}.get(platform.machine(), 0.0),
                   extensions=['png'], remove_text=True)
 def test_alpha_rcparam():
     import matplotlib.pyplot as plt
@@ -148,8 +146,7 @@ def test_fancy():
                ncol=2, shadow=True, title="My legend", numpoints=1)
 
 
-@image_comparison(baseline_images=['framealpha'], remove_text=True,
-                  tol={'aarch64': 0.02}.get(platform.machine(), 0.0))
+@image_comparison(baseline_images=['framealpha'], remove_text=True)
 def test_framealpha():
     x = np.linspace(1, 100, 100)
     y = x
