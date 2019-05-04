@@ -135,12 +135,15 @@ _freetype_hashes = {
     '2.7.1': '162ef25aa64480b1189cdb261228e6c5c44f212aac4b4621e28cf2157efb59f5',
     '2.8': '33a28fabac471891d0523033e99c0005b95e5618dc8ffa7fa47f9dadcacb1c9b',
     '2.8.1': '876711d064a6a1bd74beb18dd37f219af26100f72daaebd2d86cb493d7cd7ec6',
+    '2.9': 'bf380e4d7c4f3b5b1c1a7b2bf3abb967bda5e9ab480d0df656e0e08c5019c5e6',
+    '2.9.1': 'ec391504e55498adceb30baceebd147a6e963f636eb617424bcfc47a169898ce',
+    '2.10.0': '955e17244e9b38adb0c98df66abb50467312e6bb70eac07e49ce6bd1a20e809a',
 }
 # This is the version of FreeType to use when building a local
 # version.  It must match the value in
 # lib/matplotlib.__init__.py and also needs to be changed below in the
 # embedded windows build script (grep for "REMINDER" in this file)
-LOCAL_FREETYPE_VERSION = '2.6.1'
+LOCAL_FREETYPE_VERSION = '2.10.0'
 LOCAL_FREETYPE_HASH = _freetype_hashes.get(LOCAL_FREETYPE_VERSION, 'unknown')
 
 

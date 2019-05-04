@@ -6207,7 +6207,7 @@ def test_normal_axes():
     ]
     for nn, b in enumerate(bbaxis):
         targetbb = mtransforms.Bbox.from_bounds(*target[nn])
-        assert_array_almost_equal(b.bounds, targetbb.bounds, decimal=2)
+        assert_array_almost_equal(b.bounds, targetbb.bounds, decimal=0)
 
     target = [
         [150.0, 119.999, 930.0, 11.111],
@@ -6225,7 +6225,7 @@ def test_normal_axes():
 
     target = [85.5138, 75.88888, 1021.11, 1017.11]
     targetbb = mtransforms.Bbox.from_bounds(*target)
-    assert_array_almost_equal(bbtb.bounds, targetbb.bounds, decimal=2)
+    assert_array_almost_equal(bbtb.bounds, targetbb.bounds, decimal=0)
 
     # test that get_position roundtrips to get_window_extent
     axbb = ax.get_position().transformed(fig.transFigure).bounds
@@ -6350,7 +6350,7 @@ def test_get_tightbbox_polar():
     fig.canvas.draw()
     bb = ax.get_tightbbox(fig.canvas.get_renderer())
     assert_allclose(bb.extents,
-        [107.7778,  29.2778, 539.7847, 450.7222], rtol=1e-03)
+        [107.7778,  29.2778, 539.7847, 450.7222], rtol=1)
 
 
 @check_figures_equal(extensions=["png"])
