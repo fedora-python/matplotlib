@@ -152,7 +152,7 @@ _freetype_hashes = {
 # version.  It must match the value in
 # lib/matplotlib.__init__.py and also needs to be changed below in the
 # embedded windows build script (grep for "REMINDER" in this file)
-LOCAL_FREETYPE_VERSION = '2.6.1'
+LOCAL_FREETYPE_VERSION = '2.10.1'
 LOCAL_FREETYPE_HASH = _freetype_hashes.get(LOCAL_FREETYPE_VERSION, 'unknown')
 
 
