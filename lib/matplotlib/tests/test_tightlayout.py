@@ -172,12 +172,12 @@ def test_outward_ticks():
     plt.tight_layout()
     # These values were obtained after visual checking that they correspond
     # to a tight layouting that did take the ticks into account.
-    ans = [[[0.091, 0.607], [0.433, 0.933]],
-           [[0.579, 0.607], [0.922, 0.933]],
-           [[0.091, 0.140], [0.433, 0.466]],
-           [[0.579, 0.140], [0.922, 0.466]]]
+    ans = [[[0.09, 0.61], [0.43, 0.93]],
+           [[0.58, 0.61], [0.92, 0.93]],
+           [[0.09, 0.14], [0.43, 0.47]],
+           [[0.58, 0.14], [0.92, 0.47]]]
     for nn, ax in enumerate(fig.axes):
-        assert_array_equal(np.round(ax.get_position().get_points(), 3),
+        assert_array_equal(np.round(ax.get_position().get_points(), 2),
                            ans[nn])
 
 
