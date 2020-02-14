@@ -429,7 +429,7 @@ def test_hidden_axes():
     extents1 = np.copy(axs[0, 0].get_position().extents)
 
     np.testing.assert_allclose(
-        extents1, [0.045552, 0.543288, 0.47819, 0.982638], rtol=1e-5)
+        extents1, [0.045552, 0.543288, 0.47819, 0.982638], rtol=1e-2)
 
 
 def test_colorbar_align():
