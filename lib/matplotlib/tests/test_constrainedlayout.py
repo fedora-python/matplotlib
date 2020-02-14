@@ -432,7 +432,7 @@ def test_hidden_axes():
     extents1 = np.copy(axs[0, 0].get_position().extents)
 
     np.testing.assert_allclose(
-        extents1, [0.045552, 0.543288, 0.47819, 0.982638], rtol=1e-5)
+        extents1, [0.045552, 0.543288, 0.47819, 0.982638], rtol=1e-2)
 
 
 def test_colorbar_align():
@@ -638,9 +638,9 @@ def test_compressed1():
     fig.draw_without_rendering()
 
     pos = axs[0, 0].get_position()
-    np.testing.assert_allclose(pos.x0, 0.2344, atol=1e-3)
+    np.testing.assert_allclose(pos.x0, 0.2344, atol=1e-2)
     pos = axs[0, 1].get_position()
-    np.testing.assert_allclose(pos.x1, 0.7024, atol=1e-3)
+    np.testing.assert_allclose(pos.x1, 0.7024, atol=1e-2)
 
     # wider than tall
     fig, axs = plt.subplots(2, 3, layout='compressed',
@@ -653,10 +653,10 @@ def test_compressed1():
 
     pos = axs[0, 0].get_position()
     np.testing.assert_allclose(pos.x0, 0.06195, atol=1e-3)
-    np.testing.assert_allclose(pos.y1, 0.8537, atol=1e-3)
+    np.testing.assert_allclose(pos.y1, 0.8537, atol=1e-2)
     pos = axs[1, 2].get_position()
     np.testing.assert_allclose(pos.x1, 0.8618, atol=1e-3)
-    np.testing.assert_allclose(pos.y0, 0.1934, atol=1e-3)
+    np.testing.assert_allclose(pos.y0, 0.1934, atol=1e-2)
 
 
 @pytest.mark.parametrize('arg, state', [

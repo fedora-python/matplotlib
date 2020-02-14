@@ -176,14 +176,30 @@ _freetype_hashes = {
         '955e17244e9b38adb0c98df66abb50467312e6bb70eac07e49ce6bd1a20e809a',
     '2.10.1':
         '3a60d391fd579440561bf0e7f31af2222bc610ad6ce4d9d7bd2165bca8669110',
+    '2.10.2':
+        'e09aa914e4f7a5d723ac381420949c55c0b90b15744adce5d1406046022186ab',
+    '2.10.3':
+        '9dfb4e11efd6e460a87b1991a64bc69344ee7dc219d9b29e7faabc1c168ce8b0',
+    '2.10.4':
+        '5eab795ebb23ac77001cfb68b7d4d50b5d6c7469247b0b01b2c953269f658dac',
+    '2.11.0':
+        'a45c6b403413abd5706f3582f04c8339d26397c4304b78fa552f2215df64101f',
     '2.11.1':
-        'f8db94d307e9c54961b39a1cc799a67d46681480696ed72ecf78d4473770f09b'
+        'f8db94d307e9c54961b39a1cc799a67d46681480696ed72ecf78d4473770f09b',
+    '2.12.0':
+        '7940a46eeb0255baaa87c553d72778c4f8daa2b8888c8e2a05766a2a8686740c',
+    '2.12.1':
+        'efe71fd4b8246f1b0b1b9bfca13cfff1c9ad85930340c27df469733bbb620938',
+    '2.13.0':
+        'a7aca0e532a276ea8d85bd31149f0a74c33d19c8d287116ef8f5f8357b4f1f80',
+    '2.13.1':
+        '0b109c59914f25b4411a8de2a506fdd18fa8457eb86eca6c7b15c19110a92fa5',
 }
 # This is the version of FreeType to use when building a local version.  It
 # must match the value in lib/matplotlib.__init__.py, and the cache path in
 # `.circleci/config.yml`. Also update the docs in
 # `docs/devel/dependencies.rst`.
-TESTING_VERSION_OF_FREETYPE = '2.6.1'
+TESTING_VERSION_OF_FREETYPE = '2.13.1'
 if sys.platform.startswith('win') and platform.machine() == 'ARM64':
     # older versions of freetype are not supported for win/arm64
     # Matplotlib tests will not pass
@@ -599,6 +615,7 @@ class FreeType(SetupPackage):
                 name = ext.name.split('.')[-1]
                 ext.extra_link_args.append(
                     f'-Wl,-exported_symbol,_PyInit_{name}')
+            ext.libraries.append('brotlidec')
 
     def do_custom_build(self, env):
         # We're using a system freetype
