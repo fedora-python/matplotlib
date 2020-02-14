@@ -165,7 +165,7 @@ def test_pathclip():
 # test mixed mode rendering
 @needs_pgf_xelatex
 @pytest.mark.backend('pgf')
-@image_comparison(['pgf_mixedmode.pdf'], style='default')
+@image_comparison(['pgf_mixedmode.pdf'], style='default', tol=0.87)
 def test_mixedmode():
     mpl.rcParams.update({'font.family': 'serif', 'pgf.rcfonts': False})
     Y, X = np.ogrid[-1:1:40j, -1:1:40j]
