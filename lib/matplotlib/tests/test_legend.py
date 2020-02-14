@@ -520,9 +520,9 @@ def test_figure_legend_outside():
         fig.draw_without_rendering()
 
         assert_allclose(axs.get_window_extent().extents,
-                        axbb[nn])
+                        axbb[nn], rtol=1)
         assert_allclose(leg.get_window_extent().extents,
-                        legbb[nn])
+                        legbb[nn], rtol=1)
 
 
 @image_comparison(['legend_stackplot.png'],
