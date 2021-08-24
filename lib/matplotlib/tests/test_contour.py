@@ -345,7 +345,8 @@ def test_contourf_log_extension():
 
 
 @image_comparison(['contour_addlines.png'],
-                  remove_text=True, style='mpl20', tol=0.03)
+                  remove_text=True, style='mpl20',
+                  tol=0.03 if platform.machine() == 'x86_64' else 0.15)
 # tolerance is because image changed minutely when tick finding on
 # colorbars was cleaned up...
 def test_contour_addlines():

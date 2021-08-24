@@ -3,6 +3,7 @@ Tests specific to the lines module.
 """
 
 import itertools
+import platform
 import timeit
 from types import SimpleNamespace
 
@@ -162,7 +163,8 @@ def test_set_drawstyle():
     assert len(line.get_path().vertices) == len(x)
 
 
-@image_comparison(['line_collection_dashes'], remove_text=True, style='mpl20')
+@image_comparison(['line_collection_dashes'], remove_text=True, style='mpl20',
+                  tol=0 if platform.machine() == 'x86_64' else 0.62)
 def test_set_line_coll_dash_image():
     fig, ax = plt.subplots()
     np.random.seed(0)
