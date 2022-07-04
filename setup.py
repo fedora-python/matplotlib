@@ -316,8 +316,7 @@ setup(  # Finally, pass this all along to setuptools to do the heavy lifting.
     setup_requires=[
         "certifi>=2020.06.20",
         "numpy>=1.17",
-        "setuptools_scm>=4,<7",
-        "setuptools_scm_git_archive",
+        "setuptools_scm>=7",
     ],
     install_requires=[
         "cycler>=0.10",
@@ -330,7 +329,7 @@ setup(  # Finally, pass this all along to setuptools to do the heavy lifting.
         "python-dateutil>=2.7",
     ] + (
         # Installing from a git checkout that is not producing a wheel.
-        ["setuptools_scm>=4,<7"] if (
+        ["setuptools_scm>=7"] if (
             Path(__file__).with_name(".git").exists() and
             os.environ.get("CIBUILDWHEEL", "0") != "1"
         ) else []
