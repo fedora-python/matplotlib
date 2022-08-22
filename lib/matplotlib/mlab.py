@@ -52,6 +52,7 @@ Spectral functions
 
 import functools
 from numbers import Number
+import sys
 
 import numpy as np
 
@@ -252,7 +253,9 @@ def stride_windows(x, n, noverlap=None, axis=0):
 
 def _stride_windows(x, n, noverlap=0, axis=0):
     # np>=1.20 provides sliding_window_view, and we only ever use axis=0.
-    if hasattr(np.lib.stride_tricks, "sliding_window_view") and axis == 0:
+    if (sys.maxsize > 2**32 and  # NumPy version on 32-bit OOMs.
+            hasattr(np.lib.stride_tricks, "sliding_window_view") and
+            axis == 0):
         if noverlap >= n:
             raise ValueError('noverlap must be less than n')
         return np.lib.stride_tricks.sliding_window_view(
