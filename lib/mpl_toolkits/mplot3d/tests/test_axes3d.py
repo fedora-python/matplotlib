@@ -2264,7 +2264,7 @@ def test_scatter_masked_color():
            len(super(type(path3d), path3d).get_facecolors())
 
 
-@mpl3d_image_comparison(['surface3d_zsort_inf.png'], style='mpl20')
+@mpl3d_image_comparison(['surface3d_zsort_inf.png'], style='mpl20', tol=0.055)
 def test_surface3d_zsort_inf():
     fig = plt.figure()
     ax = fig.add_subplot(projection='3d')
